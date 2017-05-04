@@ -17,19 +17,32 @@
 </template>
 
 <script>
-    export default {    
+    import axios from 'axios';
+    export default {
         data () {
             return {
-                divider: true,
-                upLinkName: 'Наверх',
-                currentYear: this.getCurrentYear(),
-                companyName: 'СтройЭлектроГрупп'
+                divider: '',
+                upLinkName: '',
+                companyName: '',
+                currentYear: this.getCurrentYear()
             }
         },
         methods: {
             getCurrentYear: function(){
                 return new Date().getFullYear();
             }
+        },
+        created() {
+            axios.get('http://localhost:8080/src/assets/data/footer.json')
+                .then(response => {
+                    this.companyName = response.data.companyName;
+                    this.upLinkName = response.data.upLinkName;
+                    this.divider = response.data.divider;
+                })
+                .catch(e => {
+                // this.errors.push(e)
+                console.log('error');
+                })
         }
     }
 </script>

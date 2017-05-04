@@ -185,7 +185,7 @@
     </div>
     <!--end of contacts-->
 <!-- footer-custom-component -->
-      <my-footer :divider="isFooterDividerVisible"/>
+      <my-footer />
       <!--end of footer-->
   </div>
 </template>
@@ -198,12 +198,12 @@ import FeatureImage from '../src/components/FeatureImage.vue';
 import FeatureToggler from '../src/components/FeatureToggler.vue';
 import ContactType from '../src/components/ContactType.vue';
 import Carousel from '../src/components/Carousel.vue';
+import axios from 'axios';
 
 export default {
   name: 'app',
   data () {
      return {
-      
     // our-portfolio contents data
             projects: {
                 firstProject:{
@@ -311,7 +311,6 @@ export default {
             isFirstDividerVisible: true,
             isSecondDividerVisible: true,
             isThirdDividerVisible: true,
-            isFooterDividerVisible: true,
             isContactDividerVisible: false,
             
             isFirstImageVisible: true,
@@ -435,6 +434,7 @@ export default {
     }
   },
   methods: {
+        
     // trigges for setting data in feature-content components
         firstFeatureBlock: function() {
             this.setFeatureContent('feature-one');
@@ -583,11 +583,6 @@ export default {
     FeatureToggler: FeatureToggler,
     ContactType: ContactType,
     Carousel: Carousel
-  },
-  mounted(){
-    this.$on('selectFirstFeatureBlock', this.firstFeatureBlock);
-    this.$on('selectSecondFeatureBlock', this.secondFeatureBlock);
-    this.$on('selectThirdFeatureBlock', this.thirdFeatureBlock);
   }
 }
 </script>
