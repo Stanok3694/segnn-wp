@@ -36,31 +36,19 @@
       <div class="row">
         <!--first toggler-->
         <feature-toggler
-          :toggler="firstTogglerType"
-          :feature="featureToggleType"
-          :header="firstTogglerHeader"
-          :content="firstTogglerContent"
-          :source="firstAvatarImage">
+          :toggler="firstTogglerType">
         </feature-toggler>  
         <!--end of first toggler-->
 
         <!--first toggler-->
         <feature-toggler
-          :toggler="secondTogglerType"
-          :feature="featureToggleType"
-          :header="secondTogglerHeader"
-          :content="secondTogglerContent"
-          :source="secondAvatarImage">
+          :toggler="secondTogglerType">
         </feature-toggler>  
         <!--end of first toggler-->
 
         <!--first toggler-->
         <feature-toggler
-          :toggler="thirdTogglerType"
-          :feature="featureToggleType"
-          :header="thirdTogglerHeader"
-          :content="thirdTogglerContent"
-          :source="thirdAvatarImage">
+          :toggler="thirdTogglerType">
         </feature-toggler>  
         <!--end of first toggler-->
 
@@ -269,7 +257,7 @@ export default {
             thirdTogglerContent: 'Работы любого уровня сложности. Сложные комплексные проекты или сложные операции. ' 
                          + 'В сфере электромонтажых работ для СтройЭлектроГрупп нет ничего невозможного.',
     // feature-toggler type
-            firstTogglerType: 'firstFeatureToggler',
+            firstTogglerType: 'first',
             secondTogglerType: 'secondFeatureToggler',
             thirdTogglerType: 'thirdFeatureToggler',
     // feature-content headers default data  
@@ -583,6 +571,15 @@ export default {
     FeatureToggler: FeatureToggler,
     ContactType: ContactType,
     Carousel: Carousel
+  },
+  created(){
+      axios.get('src/assets/data/toggler.json')
+        .then(response => {
+            this.links = response.data.links;
+            })
+        .catch(e => {
+            console.log('error');
+            })
   }
 }
 </script>

@@ -33,15 +33,14 @@
             }
         },
         created() {
-            axios.get('http://localhost:8080/src/assets/data/footer.json')
+            axios.get('src/assets/data/footer.json')
                 .then(response => {
                     this.companyName = response.data.companyName;
                     this.upLinkName = response.data.upLinkName;
                     this.divider = response.data.divider;
                 })
                 .catch(e => {
-                // this.errors.push(e)
-                console.log('error');
+                    console.log('error');
                 })
         }
     }
