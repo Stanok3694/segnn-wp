@@ -67,13 +67,41 @@
             }
         },
         created() {
-            if(this.toggler == "first"){
-                axios.get('src/assets/data/toggler.json')
+            axios.get('src/assets/data/togglers/style.json')
                 .then(response => {
-                    this.togglerLink = response.data.first.link;
-                    this.togglerHeader = response.data.first.header;
-                    this.togglerContent = response.data.first.content;
                     this.togglerStyle = response.data.style;
+                })
+                .catch(e => {
+                    console.log('error');
+                })
+            if(this.toggler == "first"){
+                axios.get('src/assets/data/togglers/toggler-first.json')
+                .then(response => {
+                    this.togglerLink = response.data.link;
+                    this.togglerHeader = response.data.header;
+                    this.togglerContent = response.data.content;
+                })
+                .catch(e => {
+                    console.log('error');
+                })
+            }
+            if(this.toggler == "second"){
+                axios.get('src/assets/data/togglers/toggler-second.json')
+                .then(response => {
+                    this.togglerLink = response.data.link;
+                    this.togglerHeader = response.data.header;
+                    this.togglerContent = response.data.content;
+                })
+                .catch(e => {
+                    console.log('error');
+                })
+            }
+            if(this.toggler == "third"){
+                axios.get('src/assets/data/togglers/toggler-third.json')
+                .then(response => {
+                    this.togglerLink = response.data.link;
+                    this.togglerHeader = response.data.header;
+                    this.togglerContent = response.data.content;
                 })
                 .catch(e => {
                     console.log('error');

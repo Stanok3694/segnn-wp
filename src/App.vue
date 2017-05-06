@@ -258,8 +258,8 @@ export default {
                          + 'В сфере электромонтажых работ для СтройЭлектроГрупп нет ничего невозможного.',
     // feature-toggler type
             firstTogglerType: 'first',
-            secondTogglerType: 'secondFeatureToggler',
-            thirdTogglerType: 'thirdFeatureToggler',
+            secondTogglerType: 'second',
+            thirdTogglerType: 'third',
     // feature-content headers default data  
             firstFeatureHeader: 'Качество',
             secondFeatureHeader: 'Опыт',
