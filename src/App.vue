@@ -108,7 +108,7 @@
 <!--portfolio-->
     <div id="portfolio" v-show="isProjectsVisible">
 
-      <hr class="featurette-divider">
+      <!--<hr class="featurette-divider">
       <h2 align="center">Наши проектные работы</h2>
       <div class="wrapper">
         <div class="col-md-3" id="card" v-for="project in projects">
@@ -116,27 +116,12 @@
           <p>{{project.name}}</p>
           <p>{{project.data}}</p>
         </div>
-      </div>
+      </div>-->
 
-      <hr class="featurette-divider">
-      <h2 align="center">Наши электромонтажные работы</h2>
-      <div class="wrapper">
-        <div class="col-md-3 card" v-for="wiring in wirings">
-          <p>{{wiring.owner}}</p>
-          <p>{{wiring.name}}</p>
-          <p>{{wiring.data}}</p>
-        </div>
-      </div>
+      <projects content="project"></projects>
+      <projects content="wiring"></projects>
+      <projects content="audit"></projects>
 
-      <hr class="featurette-divider">
-      <h2 align="center">Наши энергетические обследования</h2>
-      <div class="wrapper">
-        <div class="col-md-3 card" v-for="audit in energoAudit">
-          <p>{{audit.owner}}</p>
-          <p>{{audit.name}}</p>
-          <p>{{audit.data}}</p>
-        </div>
-      </div>
     </div>
     <!--end of portfolio-->
 <!--contacts-->
@@ -177,6 +162,7 @@ import FeatureImage from '../src/components/FeatureImage.vue';
 import FeatureToggler from '../src/components/FeatureToggler.vue';
 import ContactType from '../src/components/ContactType.vue';
 import Carousel from '../src/components/Carousel.vue';
+import Projects from '../src/components/Projects.vue';
 import axios from 'axios';
 
 export default {
