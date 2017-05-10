@@ -1,20 +1,20 @@
 <template>
     <div>
         <hr class="featurette-divider">
-            <h2 align="center">{{projectHeader}}</h2>
-            <div class="wrapper">
+        <h2 align="center">{{projectHeader}}</h2>
+        <div class="wrapper">
             <div :class="projectStyle" id="card" v-for="project in projectContent">
               <p>{{project.owner}}</p>
               <p>{{project.name}}</p>
               <p>{{project.data}}</p>
             </div>
-          </div>
+        </div>
     </div>
 </template>
 
 <script>
     import axios from 'axios';
-    
+
     export default {
         props: {
             content: {
