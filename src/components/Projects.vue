@@ -58,7 +58,7 @@
                     })                
             }
             if(this.content == "audit"){
-                axios.get('src/assets/data/togglers/projects-third.json')
+                axios.get('src/assets/data/projects/projects-third.json')
                     .then(response => {
                         this.projectContent = response.data.energoAudit;
                         this.projectHeader = response.data.header;

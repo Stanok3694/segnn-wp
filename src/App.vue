@@ -107,21 +107,18 @@
 
 <!--portfolio-->
     <div id="portfolio" v-show="isProjectsVisible">
-
-      <!--<hr class="featurette-divider">
-      <h2 align="center">Наши проектные работы</h2>
-      <div class="wrapper">
-        <div class="col-md-3" id="card" v-for="project in projects">
-          <p>{{project.owner}}</p>
-          <p>{{project.name}}</p>
-          <p>{{project.data}}</p>
-        </div>
-      </div>-->
-
-      <projects content="project"></projects>
-      <projects content="wiring"></projects>
-      <projects content="audit"></projects>
-
+    <!--projects-->
+      <projects 
+        :content="firstPortfolioDataType">
+      </projects>
+    <!--wirings-->
+      <projects
+        :content="secondPortfolioDataType">
+      </projects>
+    <!--audit-->
+      <projects
+        :content="thirdPortfolioDataType">
+      </projects>
     </div>
     <!--end of portfolio-->
 <!--contacts-->
@@ -163,6 +160,7 @@ import FeatureToggler from '../src/components/FeatureToggler.vue';
 import ContactType from '../src/components/ContactType.vue';
 import Carousel from '../src/components/Carousel.vue';
 import Projects from '../src/components/Projects.vue';
+
 import axios from 'axios';
 
 export default {
@@ -170,57 +168,9 @@ export default {
   data () {
      return {
     // our-portfolio contents data
-            projects: {
-                firstProject:{
-                    owner: 'ОАО «Мобильные Теле Системы»',
-                    name: 'Внешнее электроснабжение БССС №52204, г.Арзамас, ул. 9 мая, д.25',
-                    data: 'Воздушно-кабельная линия 0,4кВ длиной 450м'
-                },
-                secondProject:{
-                    owner: 'ЗАО «Ойкумена»',
-                    name: 'Электроснабжение жилого комплекса «Гагаринские высоты» по пр. Гагарина в р-не НГСХА',
-                    data: 'Кабельная линия 6 кВ от ПС 110/6кВ «Мыза» длиной 3050м'
-                },
-                thirdProject:{
-                    owner: 'ОАО «Тульские городские электрические сети»',
-                    name: 'Проектирование кабеля 6 кВ от ПС№218 "Южная" до РП 41 в Привокзальном районе г.Тулы',
-                    data: 'КЛ 6 кВ длиной 2800м,камера КСО- 1 шт., пристрой к РП'
-                }
-            },
-            wirings: {
-                firstProject:{
-                    owner: 'ООО «Нижегородстрой»',
-                    name: 'Физкультурно-оздоровительный комплекс (ФОК) в г. Перевоз',
-                    data: 'Наружные и внутренние сети 0,4 кВ. Полный комплекс работ'
-                },
-                secondProject:{
-                    owner: 'ЗАО «МОСМАРТ»',
-                    name: 'Электроснабжение ТЦ на ст. Варя, г.Н.Новгород.Внешние сети',
-                    data: '4 300 м кабельных линий в земле АСБ 3х240, 4 кабеля'
-                },
-                thirdProject:{
-                    owner: 'ООО «Зефс-Энерго»',
-                    name: 'Электроснабжение строительной площадки Метромоста на правом берегу р.Оки',
-                    data: 'Кабельная линия в земле длиной 2000 м, АСБ 3х240, 2 кабеля. Двухцепная ВЛЗ проводом СИП3 150 мм² длиной 300 м.'
-                }
-            },
-            energoAudit: {
-                firstProject:{
-                    owner: 'Подведомственные учреждения,находящиеся в собственности Заказчика, по адресу: Нижегородская область, Перевозский район, с.Б.Кемары, с.Дубское',
-                    name: '«Администрация Дубского сельсовета Перевозского муниципального района Нижегородской области», Адрес:Нижегордская область, Перевозский район, с.Дубское, ул.Центральная, д.105А',
-                    data: '«Проведение энергетического обследования, составление отчета и разработка комплексной программы по повышению эффективности» и «Разработка энергетического паспорта»'
-                },
-                secondProject:{
-                    owner: 'Подведомственные учреждения, находящиеся в собственности Заказчика, по адресу: Нижегородская область, Перевозский район, с.Танайково, с.Шпилево',
-                    name: '«Администрация Танайковского сельсовета Перевозского муниципального района Нижегородской области», Адрес: Нижегордская область, Перевозский район, с.Тилинино, ул.Молодежная, д.13',
-                    data: '«Проведениеэнергетическогообследования, составлениеотчета и разработкакомплексной программыпо повышениюэффективности» и«Разработкаэнергетического паспорта»'
-                },
-                thirdProject:{
-                    owner: 'Подведомственное учреждение Управления образования администрации Перевозского муниципального района Нижегородской области по адресу: Нижегородская область, Перевозский район, с. Тилинино, ул. Новая, д.12',
-                    name: 'МДОУ «Детский сад «Жемчужинка» по адресу: Нижегородская область, Перевозский район, с. Тилинино, ул. Новая, д.12',
-                    data: '«Проведение энергетического обследования, составление отчета и разработка комплексной программы по повышению эффективности» и «Разработка энергетического паспорта»'
-                }
-            },       
+            firstPortfolioDataType: 'project',    
+            secondPortfolioDataType: 'wiring',    
+            thirdPortfolioDataType: 'audit',    
     // feature-toggler and feature-content and feature-images type
             firstElementType: 'first',
             secondElementType: 'second',
@@ -485,7 +435,8 @@ export default {
     FeatureImage: FeatureImage,
     FeatureToggler: FeatureToggler,
     ContactType: ContactType,
-    Carousel: Carousel
+    Carousel: Carousel,
+    Projects: Projects
   }
 }
 </script>
