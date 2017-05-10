@@ -31,41 +31,6 @@
                 togglerLink: ''
             }
         },
-        methods: {
-            setFeatureTogglerLink: function(){
-                if(this.toggler == 'first'){
-                    this.togglerLink = this.links.first
-                }
-                if(this.toggler == 'second'){
-                    this.togglerLink = this.links.second
-                }
-                if(this.toggler == 'third'){
-                    this.togglerLink = this.links.third
-                }
-            },
-            setFeatureTogglerHeader: function(){
-                if(this.toggler == 'first'){
-                    this.togglerHeader = this.headers.first
-                }
-                if(this.toggler == 'second'){
-                    this.togglerHeader = this.headers.second
-                }
-                if(this.toggler == 'third'){
-                    this.togglerHeader = this.headers.third
-                }
-            },
-            setFeatureTogglerContent: function(){
-                if(this.toggler == 'first'){
-                    this.togglerContent = this.contents.first
-                }
-                if(this.toggler == 'second'){
-                    this.togglerContent = this.contents.second
-                }
-                if(this.toggler == 'third'){
-                    this.togglerContent = this.contents.third
-                }
-            }
-        },
         created() {
             axios.get('src/assets/data/togglers/toggler-style.json')
                 .then(response => {

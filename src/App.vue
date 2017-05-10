@@ -31,24 +31,24 @@
 <!--carousel-->
     <carousel></carousel>
 <!--marketing-->
-    <div class="container marketing" v-if="isFeaturesBlockVisible">
+    <div class="container marketing" v-show="isFeaturesBlockVisible">
       <!-- features-togglers-->
       <div class="row">
         <!--first toggler-->
         <feature-toggler
-          :toggler="firstTogglerType">
+          :toggler="firstElementType">
         </feature-toggler>  
         <!--end of first toggler-->
 
         <!--first toggler-->
         <feature-toggler
-          :toggler="secondTogglerType">
+          :toggler="secondElementType">
         </feature-toggler>  
         <!--end of first toggler-->
 
         <!--first toggler-->
         <feature-toggler
-          :toggler="thirdTogglerType">
+          :toggler="thirdElementType">
         </feature-toggler>  
         <!--end of first toggler-->
 
@@ -60,15 +60,14 @@
         <feature-content 
             :visibility="isFirstFeatureVisible"
             :feature="firstTypeOfFeature"
-            :header = "firstFeatureHeader"
-            :content="firstFeatureContent"
+            :content="firstElementType"
             :divider="isFirstDividerVisible">
         </feature-content>
         <!-- feature-image-component -->
         <feature-image
             :visibility="isFirstImageVisible"
-            :source="firstFeatureImage"
-            :feature="firstTypeOfImage">
+            :source="firstElementType"
+            :feature="firstTypeOfFeature">
         </feature-image>
       </div>
 
@@ -77,15 +76,14 @@
         <feature-content
             :visibility="isSecondFeatureVisible"
             :feature="secondTypeOfFeature"
-            :header = "secondFeatureHeader"
-            :content="secondFeatureContent"
+            :content="secondElementType"
             :divider="isSecondDividerVisible">
         </feature-content>
         <!-- feature-image-component -->
         <feature-image
             :visibility="isSecondImageVisible"
-            :source="secondFeatureImage"
-            :feature="secondTypeOfImage">
+            :source="secondElementType"
+            :feature="secondTypeOfFeature">
         </feature-image>
       </div>
 
@@ -94,22 +92,22 @@
         <feature-content
             :visibility="isThirdFeatureVisible"
             :feature="firstTypeOfFeature"
-            :header = "thirdFeatureHeader"
-            :content="thirdFeatureContent"
+            :content="thirdElementType"
             :divider="isThirdDividerVisible">
         </feature-content>
         <!-- feature-image-component -->
         <feature-image
             :visibility="isThirdImageVisible"
-            :source="thirdFeatureImage"
-            :feature="firstTypeOfImage">
+            :source="thirdElementType"
+            :feature="firstTypeOfFeature">
         </feature-image>
       </div>
     </div>
     <!--end of marketing-->
 
 <!--portfolio-->
-    <div id="portfolio" v-if="isProjectsVisible">
+    <div id="portfolio" v-show="isProjectsVisible">
+
       <hr class="featurette-divider">
       <h2 align="center">Наши проектные работы</h2>
       <div class="wrapper">
@@ -119,6 +117,7 @@
           <p>{{project.data}}</p>
         </div>
       </div>
+
       <hr class="featurette-divider">
       <h2 align="center">Наши электромонтажные работы</h2>
       <div class="wrapper">
@@ -128,6 +127,7 @@
           <p>{{wiring.data}}</p>
         </div>
       </div>
+
       <hr class="featurette-divider">
       <h2 align="center">Наши энергетические обследования</h2>
       <div class="wrapper">
@@ -140,34 +140,25 @@
     </div>
     <!--end of portfolio-->
 <!--contacts-->
-    <div id="contacts" class="wrapper" v-if="isContactsVisible">
+    <div id="contacts" class="wrapper" v-show="isContactsVisible">
       <div class="row">
-        <!--first toggler-->
+        <!--first contact-->
         <contact-type
-          :feature="featureToggleType"
-          :header="firstContactHeader"
-          :content="firstContactContent"
-          :source="firstContactImage">
+          :content="firstElementType">
         </contact-type>  
-        <!--end of first toggler-->
+        <!--end of first contact-->
 
-        <!--first toggler-->
+        <!--second contact-->
         <contact-type
-          :feature="featureToggleType"
-          :header="secondContactHeader"
-          :content="secondContactContent"
-          :source="secondContactImage">
+          :content="secondElementType">
         </contact-type>  
-        <!--end of first toggler-->
+        <!--end of second contact-->
 
-        <!--first toggler-->
+        <!--third contact-->
         <contact-type
-          :feature="featureToggleType"
-          :header="thirdContactHeader"
-          :content="thirdContactContent"
-          :source="thirdContactImage">
+          :content="thirdElementType">
         </contact-type>  
-        <!--end of first toggler-->
+        <!--end of third contact-->
 
       </div><!-- /.row -->
     </div>
@@ -243,38 +234,14 @@ export default {
                     name: 'МДОУ «Детский сад «Жемчужинка» по адресу: Нижегородская область, Перевозский район, с. Тилинино, ул. Новая, д.12',
                     data: '«Проведение энергетического обследования, составление отчета и разработка комплексной программы по повышению эффективности» и «Разработка энергетического паспорта»'
                 }
-            },
-   // feature-toggler type
-            firstTogglerType: 'first',
-            secondTogglerType: 'second',
-            thirdTogglerType: 'third',
-    // feature-content headers default data  
-            firstFeatureHeader: 'Качество',
-            secondFeatureHeader: 'Опыт',
-            thirdFeatureHeader: 'Гибкость',
-    // feature-content contents default data
-            firstFeatureContent: 'Ключевой критерий для нас - качество выполняемых работ. ' 
-                         + 'Проводником нашего стремления к максимальному качеству стал комплекс '
-                         + 'современных технологий, талантливых рабочих и грамотного взаимодействия '
-                         + 'с нашими клиентами. Мы знаем как сделать КАЧЕСТВЕННО',
-            secondFeatureContent: 'Вот уже более 15 лет СтройЭлектроГрупп осуществляет свою деятельность. ' 
-                         + 'Пройденный нами путь способствовал достижению высокого уровня зрелости бизнес-процессов '
-                         + 'как внутри компании, так и во взаимодействии с клиентами. '
-                         + 'с нашими клиентами. Мы знаем КАК делать',
-            thirdFeatureContent: 'Благодаря стремлению к новым интересным задачам, ' 
-                         + 'наша компания накопила значительный багаж самых разных проектов. '
-                         + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
-                         + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
-    // feature-images default URL
-            firstFeatureImage: 'src/assets/images/features/default/default1.jpg',
-            secondFeatureImage: 'src/assets/images/features/default/default2.jpg',
-            thirdFeatureImage: 'src/assets/images/features/default/default3.jpg',
-   
-    // classes data
-            firstTypeOfFeature: 'col-md-7',
-            secondTypeOfFeature: 'col-md-7 col-md-push-5',
-            firstTypeOfImage: 'col-md-5',
-            secondTypeOfImage: 'col-md-5 col-md-pull-7',
+            },       
+    // feature-toggler and feature-content and feature-images type
+            firstElementType: 'first',
+            secondElementType: 'second',
+            thirdElementType: 'third',
+    // feature-content and feature-image type
+            firstTypeOfFeature: 'first',
+            secondTypeOfFeature: 'second',
     // flags
             isFirstFeatureVisible: true,
             isSecondFeatureVisible: true,
@@ -295,12 +262,6 @@ export default {
             isFeaturesBlockVisible: true,
     // data object for header
             featureHeaders: {
-                // for "ГЛАВНАЯ" feature-content components
-                defaultFeatureHeaders: {
-                    firstDefaultHeader: 'Качество',
-                    secondDefaultHeader: 'Опыт',
-                    thirdDefaultHeader: 'Гибкость'
-                },
                 // for "ЭЛЕКТРОМОНТАЖНЫЕ РАБОТЫ" feature-content components
                 wiringFeatureHeaders:{
                     firstHeader: 'Производство электромонтажных работ',
@@ -372,11 +333,6 @@ export default {
             },
     // data object for images
             featureImages: {
-                defaultImages: {
-                    firstImage: 'src/assets/images/features/default/default1.jpg',
-                    secondImage: 'src/assets/images/features/default/default2.jpg',
-                    thirdImage: 'src/assets/images/features/default/default3.jpg'
-                },
                 wiringFeatureImages: {
                     firstImage: 'src/assets/images/features/wiring/wiring1.jpg',
                     secondImage: 'src/assets/images/features/wiring/wiring2.jpg',
@@ -391,18 +347,7 @@ export default {
                     secondImage: 'src/assets/images/features/special/special2.png'
                     }
             },
-    // contacts headers:
-            firstContactHeader: 'Мы ждём Ваших звонков',
-            secondContactHeader: 'Мы ждём Ваших писем',
-            thirdContactHeader: 'Мы ждём Вас',
-    // contacts contents:
-            firstContactContent: 'Наш сотовый: 8-800-555-35-35',
-            secondContactContent: 'Наш e-mail: prokol@pro.col',
-            thirdContactContent: 'Наш адрес: г.Нижний Новгород, ул. Лескова, д.37',
-    // contacts images:
-            firstContactImage: 'src/assets/images/contacts/phone.png',
-            secondContactImage: 'src/assets/images/contacts/email.png',
-            thirdContactImage: 'src/assets/images/contacts/road.png'
+
     }
   },
   methods: {

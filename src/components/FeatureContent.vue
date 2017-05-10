@@ -5,10 +5,10 @@
         </div>
         <div :class="featureType" v-if="visibility">
             <h2 class="featurette-heading">
-                {{header}}
+                {{featureHeader}}
             </h2>
             <p class="lead">
-                {{content}}
+                {{featureContent}}
             </p>
         </div>
     </div>
@@ -43,8 +43,9 @@
             }
         },
         created(){
+            // getting styles
             if(this.feature == "first"){
-                axios.get('src/assets/data/feature-contents/feature-style.json')
+                axios.get('src/assets/data/default-feature-contents/feature-style.json')
                     .then(response => {
                         this.featureType = response.data.first;
                     })
@@ -53,7 +54,7 @@
                     })
             }
             if(this.feature == "second"){
-                axios.get('src/assets/data/feature-contents/feature-style.json')
+                axios.get('src/assets/data/default-feature-contents/feature-style.json')
                     .then(response => {
                         this.featureType = response.data.second;
                     })
@@ -61,8 +62,9 @@
                         console.log('error');
                     })
             }
+            // getting default contents
             if(this.content == "first"){
-                axios.get('src/assets/data/feature-contents/feature-first.json')
+                axios.get('src/assets/data/default-feature-contents/feature-first.json')
                     .then(response => {
                         this.featureHeader = response.data.header;
                         this.featureContent = response.data.content;
@@ -72,7 +74,7 @@
                     })
             }
             if(this.content == "second"){
-                axios.get('src/assets/data/feature-contents/feature-second.json')
+                axios.get('src/assets/data/default-feature-contents/feature-second.json')
                     .then(response => {
                         this.featureHeader = response.data.header;
                         this.featureContent = response.data.content;
@@ -82,7 +84,7 @@
                     })
             }
             if(this.content == "third"){
-                axios.get('src/assets/data/feature-contents/feature-third.json')
+                axios.get('src/assets/data/default-feature-contents/feature-third.json')
                     .then(response => {
                         this.featureHeader = response.data.header;
                         this.featureContent = response.data.content;
