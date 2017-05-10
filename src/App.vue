@@ -244,19 +244,7 @@ export default {
                     data: '«Проведение энергетического обследования, составление отчета и разработка комплексной программы по повышению эффективности» и «Разработка энергетического паспорта»'
                 }
             },
-    // feature-toggler headers data
-            firstTogglerHeader: 'Электромонтажные работы',
-            secondTogglerHeader: 'Энергоаудит',
-            thirdTogglerHeader: 'Специальные виды работ',
-    // feature-toggler contents data
-            firstTogglerContent: 'Основное направление деятельности СтройЭлектроГрупп. ' 
-                         + 'Оказываем полный комплекс услуг по электромонтажу.',
-            secondTogglerContent: 'Предварительный энергоаудит или энергоаудит, как отдельная услуга? ' 
-                         + 'Это не важно. Для Вас мы готовы провести глубокое исследование в сфере ' 
-                         + 'аудита энергосетей.',
-            thirdTogglerContent: 'Работы любого уровня сложности. Сложные комплексные проекты или сложные операции. ' 
-                         + 'В сфере электромонтажых работ для СтройЭлектроГрупп нет ничего невозможного.',
-    // feature-toggler type
+   // feature-toggler type
             firstTogglerType: 'first',
             secondTogglerType: 'second',
             thirdTogglerType: 'third',
@@ -277,20 +265,16 @@ export default {
                          + 'наша компания накопила значительный багаж самых разных проектов. '
                          + 'Это позволяет нам браться за любые профильные задачи и решать их в соответствии с Вашими ожиданиями. '
                          + 'Мы знаем ЧЕГО ВЫ ХОТИТЕ',
-    // feature-images default URLs
+    // feature-images default URL
             firstFeatureImage: 'src/assets/images/features/default/default1.jpg',
             secondFeatureImage: 'src/assets/images/features/default/default2.jpg',
             thirdFeatureImage: 'src/assets/images/features/default/default3.jpg',
-    // feature-toggler images urls
-            firstAvatarImage: 'src/assets/images/avatars/avatar1.jpg',
-            secondAvatarImage: 'src/assets/images/avatars/avatar2.jpg',
-            thirdAvatarImage: 'src/assets/images/avatars/avatar3.jpg',
+   
     // classes data
-                firstTypeOfFeature: 'col-md-7',
-                secondTypeOfFeature: 'col-md-7 col-md-push-5',
-                firstTypeOfImage: 'col-md-5',
-                secondTypeOfImage: 'col-md-5 col-md-pull-7',
-                featureToggleType: 'col-lg-4 col-md-4 feature-toggler', 
+            firstTypeOfFeature: 'col-md-7',
+            secondTypeOfFeature: 'col-md-7 col-md-push-5',
+            firstTypeOfImage: 'col-md-5',
+            secondTypeOfImage: 'col-md-5 col-md-pull-7',
     // flags
             isFirstFeatureVisible: true,
             isSecondFeatureVisible: true,
@@ -571,15 +555,6 @@ export default {
     FeatureToggler: FeatureToggler,
     ContactType: ContactType,
     Carousel: Carousel
-  },
-  created(){
-      axios.get('src/assets/data/toggler.json')
-        .then(response => {
-            this.links = response.data.links;
-            })
-        .catch(e => {
-            console.log('error');
-            })
   }
 }
 </script>

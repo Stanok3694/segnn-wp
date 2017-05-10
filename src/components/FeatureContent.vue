@@ -3,7 +3,7 @@
         <div v-if="divider">
             <hr class="featurette-divider">
         </div>
-        <div :class="feature" v-if="visibility">
+        <div :class="featureType" v-if="visibility">
             <h2 class="featurette-heading">
                 {{header}}
             </h2>
@@ -15,12 +15,9 @@
 </template>
 
 <script>
+    import axios from 'axios';
     export default {
         props: {
-            header: {
-                type: String,
-                required: true
-            },
             content: {
                 type: String,
                 required: true
@@ -40,7 +37,59 @@
         },
         data(){
             return {
-                // Does this need?
+               featureType: "",
+               featureHeader: "",
+               featureContent: ""
+            }
+        },
+        created(){
+            if(this.feature == "first"){
+                axios.get('src/assets/data/feature-contents/feature-style.json')
+                    .then(response => {
+                        this.featureType = response.data.first;
+                    })
+                    .catch(e => {
+                        console.log('error');
+                    })
+            }
+            if(this.feature == "second"){
+                axios.get('src/assets/data/feature-contents/feature-style.json')
+                    .then(response => {
+                        this.featureType = response.data.second;
+                    })
+                    .catch(e => {
+                        console.log('error');
+                    })
+            }
+            if(this.content == "first"){
+                axios.get('src/assets/data/feature-contents/feature-first.json')
+                    .then(response => {
+                        this.featureHeader = response.data.header;
+                        this.featureContent = response.data.content;
+                    })
+                    .catch(e => {
+                        console.log('error');
+                    })
+            }
+            if(this.content == "second"){
+                axios.get('src/assets/data/feature-contents/feature-second.json')
+                    .then(response => {
+                        this.featureHeader = response.data.header;
+                        this.featureContent = response.data.content;
+                    })
+                    .catch(e => {
+                        console.log('error');
+                    })
+            }
+            if(this.content == "third"){
+                axios.get('src/assets/data/feature-contents/feature-third.json')
+                    .then(response => {
+                        this.featureHeader = response.data.header;
+                        this.featureContent = response.data.content;
+                    })
+                    .catch(e => {
+                        console.log('error');
+                    })
             }
         }
     }

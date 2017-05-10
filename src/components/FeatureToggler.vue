@@ -67,7 +67,7 @@
             }
         },
         created() {
-            axios.get('src/assets/data/togglers/style.json')
+            axios.get('src/assets/data/togglers/toggler-style.json')
                 .then(response => {
                     this.togglerStyle = response.data.style;
                 })
