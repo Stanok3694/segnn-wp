@@ -2,30 +2,7 @@
   <div id="app">
 
 <!--navbar-->
-    <div class="navbar-wrapper">
-      <div class="container">
-        <nav class="navbar navbar-inverse navbar-static-top">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" >СтройЭлектроГрупп</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-              <ul class="nav navbar-nav">
-                <li class="active" ><a href="#" @click="resetContentAndHeaders">Главная</a></li>
-                <li><a href="#portfolio" @click="togglePortfolioVisible">Наше портфолио</a></li>
-                <li><a href="#contacts" @click="toggleContactsVisible">Контакты</a></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
+    <my-navbar></my-navbar>
     <!--end of navbar-->
 
 <!--carousel-->
@@ -154,6 +131,7 @@
 <script>
 
 import myFooter from '../src/components/Footer.vue';
+import myNavbar from '../src/components/Navbar.vue';
 import FeatureContent from '../src/components/FeatureContent.vue';
 import FeatureImage from '../src/components/FeatureImage.vue';
 import FeatureToggler from '../src/components/FeatureToggler.vue';
@@ -287,102 +265,6 @@ export default {
     }
   },
   methods: {
-        
-    // trigges for setting data in feature-content components
-        firstFeatureBlock: function() {
-            this.setFeatureContent('feature-one');
-            this.setFeatureHeader('feature-one');
-            this.setFeatureImage('feature-one');
-            this.toggleFeatureContentBlockVisibility('feature-one');
-        },
-        secondFeatureBlock: function() {
-            this.setFeatureContent('feature-two');
-            this.setFeatureHeader('feature-two');
-            this.setFeatureImage('feature-two');
-            this.toggleFeatureContentBlockVisibility('feature-two');
-        },
-        thirdFeatureBlock: function() {
-            this.setFeatureContent('feature-three');
-            this.setFeatureHeader('feature-three');
-            this.setFeatureImage('feature-three');
-            this.toggleFeatureContentBlockVisibility('feature-three');
-        },
-        resetContentAndHeaders: function(){
-            this.isProjectsVisible = false;
-            this.isContactsVisible = false;
-            this.isFeaturesBlockVisible = true;
-
-            this.setVisible();
-            this.setDefaultData();
-        },
-    // setters for feature-content and feature-image components DEFAULT data
-        setDefaultData: function(){
-            this.setDefaultFeaturesContents();
-            this.setDefaultFeaturesHeaders();
-            this.setDefaultFeaturesImages();
-        },
-        setDefaultFeaturesContents: function(){
-            this.firstFeatureContent = this.featureContents.defaultTexts.firstText;
-            this.secondFeatureContent = this.featureContents.defaultTexts.secondText;
-            this.thirdFeatureContent = this.featureContents.defaultTexts.thirdText;
-        },
-        setDefaultFeaturesHeaders: function(){
-            this.firstFeatureHeader = this.featureHeaders.defaultFeatureHeaders.firstDefaultHeader;
-            this.secondFeatureHeader = this.featureHeaders.defaultFeatureHeaders.secondDefaultHeader;
-            this.thirdFeatureHeader = this.featureHeaders.defaultFeatureHeaders.thirdDefaultHeader;
-        },
-        setDefaultFeaturesImages: function(){
-            this.firstFeatureImage = this.featureImages.defaultImages.firstImage;
-            this.secondFeatureImage = this.featureImages.defaultImages.secondImage;
-            this.thirdFeatureImage = this.featureImages.defaultImages.thirdImage;
-        },
-    // setters for feature-content and feature-image components ACTUAL data
-        setFeatureHeader: function(name){
-            if(name == "feature-one"){
-                this.firstFeatureHeader = this.featureHeaders.wiringFeatureHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.wiringFeatureHeaders.secondHeader;
-                this.thirdFeatureHeader = this.featureHeaders.wiringFeatureHeaders.thirdHeader;
-            }
-            if(name == "feature-two"){
-                this.firstFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.energoAuditFeatureHeaders.secondHeader;
-            }
-            if(name == "feature-three"){
-                this.firstFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.firstHeader;
-                this.secondFeatureHeader = this.featureHeaders.specialWorksFeatureHeaders.secondHeader;
-            }
-        },
-        // should change this method for real data
-        setFeatureContent: function(name){
-            if(name == "feature-one"){
-                this.firstFeatureContent = this.featureContents.wiringFeatureTexts.firstText;
-                this.secondFeatureContent = this.featureContents.wiringFeatureTexts.secondText;
-                this.thirdFeatureContent = this.featureContents.wiringFeatureTexts.thirdText;
-            }
-            if(name == "feature-two"){
-                this.firstFeatureContent = this.featureContents.energoAuditFeatureTexts.firstText;
-                this.secondFeatureContent = this.featureContents.energoAuditFeatureTexts.secondText;
-            }
-            if(name == "feature-three"){
-                this.firstFeatureContent = this.featureContents.specialWorksFeatureTexts.firstText;
-                this.secondFeatureContent = this.featureContents.specialWorksFeatureTexts.secondText
-            }
-        },
-        setFeatureImage: function(name){
-            if(name == "feature-one"){
-                this.firstFeatureImage = this.featureImages.wiringFeatureImages.firstImage;
-                this.secondFeatureImage = this.featureImages.wiringFeatureImages.secondImage;
-                this.thirdFeatureImage = this.featureImages.wiringFeatureImages.thirdImage;
-            }
-            if(name == "feature-two"){
-                this.firstFeatureImage = this.featureImages.energoAuditFeatureImages.firstImage;
-                this.secondFeatureImage = this.featureImages.energoAuditFeatureImages.secondImage;
-            }
-            if(name == "feature-three"){
-                this.firstFeatureImage = this.featureImages.specialWorksFeatureImages.firstImage;
-                this.secondFeatureImage = this.featureImages.specialWorksFeatureImages.secondImage;
-            }
-        },
     // visible-unvisible triggers
         toggleContactsVisible: function(){
             this.isContactsVisible = true;
@@ -426,11 +308,10 @@ export default {
         setInvisibleForThirdDivider: function(){
             this.isThirdDividerVisible = false;
         }
-    
-  
   },
   components: {
     myFooter: myFooter,
+    myNavbar: myNavbar,
     FeatureContent: FeatureContent,
     FeatureImage: FeatureImage,
     FeatureToggler: FeatureToggler,
